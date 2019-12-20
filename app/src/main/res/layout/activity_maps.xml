@@ -16,13 +16,13 @@
         android:layout_marginTop="10dp"
         android:padding="10dp"
         android:paddingRight="10dp"
-        android:text="Search Button" />
+        android:text="Rechercher une ville" />
 <!--TODO Gérer condition affichage du bouton-->
     <Button
         android:id="@+id/button_id"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="Villes"
+        android:text="Distance"
         android:layout_alignBottom="@id/map"
         android:layout_alignEnd="@id/map"
         android:layout_gravity="left|bottom"

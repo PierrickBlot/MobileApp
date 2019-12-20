@@ -99,7 +99,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
         if (CityCoordsManager.isFound()) {
             val custom = LatLng(CityCoordsManager.getLat(), CityCoordsManager.getLong())
-            map.addMarker(MarkerOptions().position(custom).title("New Marker"))
+            map.addMarker(MarkerOptions().position(custom))
             map.moveCamera(CameraUpdateFactory.newLatLng(custom))
 
             fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
