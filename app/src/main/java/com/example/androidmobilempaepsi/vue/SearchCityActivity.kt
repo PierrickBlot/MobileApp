@@ -1,5 +1,6 @@
 package com.example.androidmobilempaepsi.vue
 
+import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
@@ -24,25 +25,31 @@ class SearchCityActivity : AppCompatActivity() {
     }
 
     fun onBtnValiderSearchClick() {
-        getLatAndLongFromString()
         btnValiderSearch.setOnClickListener {
-            CityCoordsManager.setLat(5.5)
-            CityCoordsManager.setLat(4.4)
-            finish()
+            getLatAndLongFromString(txtSearchLocation.text.toString())
+            val myIntent = Intent(this, MapsActivity::class.java)
+            startActivity(myIntent)
         }
     }
 
-    private fun getLatAndLongFromString() {
-        setCoordsFromAdressList(Geocoder(this).getFromLocationName("France", 1))
+    private fun getLatAndLongFromString(location: String) {
+        CityCoordsManager.setIsFound(false)
+        if (!location.equals("")) {
+            setCoordsFromAdressList(getAdressListFromString(location))
+        }
+    }
+
+    private fun getAdressListFromString(location: String): List<Address> {
+        return Geocoder(this).getFromLocationName(location, 1)
     }
 
     private fun setCoordsFromAdressList(addressList: List<Address>) {
         if (addressList.size.equals(0)) {
-            CityCoordsManager.setIsFound(false)
             return
         }
         val address = addressList.get(0)
         CityCoordsManager.setLat(address.latitude)
         CityCoordsManager.setLong(address.longitude)
+        CityCoordsManager.setIsFound(true)
     }
 }

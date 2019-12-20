@@ -19,7 +19,6 @@ import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-
     private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,24 +37,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onRestart() { // on back from activity search
-        Log.d("TEST-DEBUG", CityCoordsManager.getLat().toString())
         if (CityCoordsManager.isFound()) {
-
+            Log.d("TEST-DEBUG", "pays trouvé")
         }
         super.onRestart()
     }
-
 
     private fun onBtnSearchClick() {
         btnSearch.setOnClickListener {
             val myIntent = Intent(this, SearchCityActivity::class.java)
             startActivity(myIntent)
         }
-    }
-
-    override fun onTopResumedActivityChanged(isTopResumedActivity: Boolean) {
-        Log.d("TEST-DEBUG", "coucou")
-        super.onTopResumedActivityChanged(isTopResumedActivity)
     }
 
     /**
@@ -70,7 +62,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
         val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
