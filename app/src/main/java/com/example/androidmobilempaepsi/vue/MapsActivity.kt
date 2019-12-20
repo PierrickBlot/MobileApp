@@ -1,24 +1,35 @@
 package com.example.androidmobilempaepsi.vue
 
-import android.location.Location
-import android.content.pm.PackageManager
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.androidmobilemapepsi.R
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import android.location.Location
+import android.content.pm.PackageManager
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_maps.*
 import android.content.Intent
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import com.example.androidmobilemapepsi.R
 import com.google.android.gms.maps.model.Marker
+import android.location.Geocoder
+import android.util.Log
+import com.example.androidmobilempaepsi.modele.CityCoordsManager
+import java.util.*
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
     private lateinit var lastLocation: Location
@@ -67,6 +78,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         btnSearch.setOnClickListener {
             val myIntent = Intent(this, SearchCityActivity::class.java)
             startActivity(myIntent)
+            finish()
         }
     }
 
@@ -86,9 +98,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         map.setOnMarkerClickListener(this)
 
         setUpMap()
+
+        if (CityCoordsManager.isFound()){
+            val custom = LatLng(CityCoordsManager.getLat(), CityCoordsManager.getLong())
+            mMap.addMarker(MarkerOptions().position(custom).title("New Marker"))
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(custom))
+        }
     }
 
     override fun onMarkerClick(p0: Marker?) = false
 
+
+    }
 
 }
