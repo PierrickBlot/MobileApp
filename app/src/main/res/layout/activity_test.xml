@@ -6,14 +6,14 @@
     android:layout_margin="10dp">
 
 
-    <TextView
-        android:id="@+id/citiesTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100sp"
-        android:textSize="20sp"
-        android:padding="5dp"
-        android:layout_gravity="center" />
+<!--    <TextView-->
+<!--        android:id="@+id/citiesTextView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="100sp"-->
+<!--        android:textSize="20sp"-->
+<!--        android:padding="5dp"-->
+<!--        android:layout_gravity="center" />-->
 
     <TextView
         android:id="@+id/distTextView"

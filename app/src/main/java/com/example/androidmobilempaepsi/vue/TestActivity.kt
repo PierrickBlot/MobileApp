@@ -1,4 +1,4 @@
-package com.example.androidmobilemapepsi.vue
+package com.example.androidmobilempaepsi.vue
 
 import android.os.Bundle
 import android.widget.TextView
@@ -10,12 +10,8 @@ class TestActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState:Bundle?){
 
-        var ville1 = intent.getStringExtra("VILLE_1")
-        var pays1 = intent.getStringExtra("PAYS_1")
         var lat1:Double = intent.getDoubleExtra("LAT_1",0.0)
         var long1:Double = intent.getDoubleExtra("LONG_1",0.0)
-        var ville2 = intent.getStringExtra("VILLE_2")
-        var pays2 = intent.getStringExtra("PAYS_2")
         var lat2:Double = intent.getDoubleExtra("LAT_2",0.0)
         var long2:Double = intent.getDoubleExtra("LONG_2",0.0)
 
@@ -44,7 +40,7 @@ class TestActivity : AppCompatActivity(){
         //var oui = distanceInKmBetweenEarthCoordinates(100.1, 100.1, 200.2, 200.2)
         var oui = distanceInKmBetweenEarthCoordinates(lat1, long1, lat2, long2)
         var disp = String.format("%.1f", oui).plus(" Km")
-        findViewById<TextView>(R.id.citiesTextView).text = "Paris (France) - Tokyo (Japon)"
+        // findViewById<TextView>(R.id.citiesTextView).text = "Paris (France) - Tokyo (Japon)"
         findViewById<TextView>(R.id.distTextView).text = disp
 
     }

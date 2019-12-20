@@ -100,6 +100,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             val custom = LatLng(CityCoordsManager.getLat(), CityCoordsManager.getLong())
             map.addMarker(MarkerOptions().position(custom).title("New Marker"))
             map.moveCamera(CameraUpdateFactory.newLatLng(custom))
+
+            fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
+                // Got last known location. In some rare situations this can be null.
+                if (location != null) {
+                    lastLocation = location
+                    val currentLatLng = LatLng(location.latitude, location.longitude)
+                    button_id.setOnClickListener {
+                        var intent = Intent(this, TestActivity::class.java)
+                        intent.putExtra("LAT_1", location.latitude)
+                        intent.putExtra("LONG_1", location.longitude)
+                        intent.putExtra("LAT_2", CityCoordsManager.getLat())
+                        intent.putExtra("LONG_2", CityCoordsManager.getLong())
+                        startActivity(intent)
+                    }
+                }
+            }
+
         }
     }
 

@@ -18,6 +18,11 @@
         <activity
             android:name="com.example.androidmobilempaepsi.vue.SearchCityActivity"
             android:label="@string/title_activity_search_city"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity><activity
+            android:name="com.example.androidmobilempaepsi.vue.TestActivity"
+            android:label="@string/title_activity_test"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
