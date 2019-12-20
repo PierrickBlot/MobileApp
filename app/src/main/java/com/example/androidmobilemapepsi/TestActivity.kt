@@ -6,21 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 class TestActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState:Bundle?){
         super.onCreate(savedInstanceState)
+        val x1 = intent.getIntExtra("X1_COORD",0)
         setContentView(R.layout.activity_test)
-        println("test")
+        //calculDistance(x1,x2,y1,y2)
     }
 
-    /*fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_maps)
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-        button_id.setOnClickListener {
-            val intent = Intent(this, TestActivity::class.java)
-            startActivity(intent)
-        }
+    fun calculDistance(x1:Int,x2:Int,y1:Int,y2:Int){
 
-    }*/
+    }
+
 }
 
