@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_maps.*
 import android.content.Intent
+import android.view.View
 import com.example.androidmobilemapepsi.R
 import com.google.android.gms.maps.model.Marker
 import com.example.androidmobilempaepsi.modele.CityCoordsManager
@@ -106,6 +107,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 if (location != null) {
                     lastLocation = location
                     val currentLatLng = LatLng(location.latitude, location.longitude)
+                    button_id.visibility= View.VISIBLE
                     button_id.setOnClickListener {
                         var intent = Intent(this, TestActivity::class.java)
                         intent.putExtra("LAT_1", location.latitude)
@@ -117,6 +119,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 }
             }
 
+        } else {
+            button_id.visibility= View.INVISIBLE
         }
     }
 
