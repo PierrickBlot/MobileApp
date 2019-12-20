@@ -4,6 +4,7 @@ import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.text.TextWatcher
 import android.util.Log
 import android.view.KeyEvent
 import android.widget.TextView
@@ -29,12 +30,7 @@ class SearchCityActivity : AppCompatActivity() {
         onBtnValiderSearchClick()
     }
 
-
     fun onTxtSearchType() {
-        txtSearchLocation.setOnEditorActionListener { textView: TextView, _: Int, _: KeyEvent ->
-            Log.d("TEST-DEBUG", textView.text.toString())
-            true
-        }
     }
 
     fun onBtnValiderSearchClick() {
@@ -47,7 +43,7 @@ class SearchCityActivity : AppCompatActivity() {
 
     private fun getLatAndLongFromString(location: String) {
         if (!location.equals("")) {
-            setCoordsFromAdressList(getAdressListFromString(location))
+            setCoordsFromAdressList(addressList)
         }
     }
 
