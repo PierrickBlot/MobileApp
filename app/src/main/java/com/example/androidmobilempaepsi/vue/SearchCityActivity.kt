@@ -5,6 +5,8 @@ import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
+import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidmobilemapepsi.R
@@ -14,6 +16,8 @@ import kotlinx.android.synthetic.main.activity_search_city.*
 
 class SearchCityActivity : AppCompatActivity() {
 
+    private val addressList: List<Address> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_city)
@@ -21,7 +25,16 @@ class SearchCityActivity : AppCompatActivity() {
     }
 
     private fun addListeners() {
+        onTxtSearchType()
         onBtnValiderSearchClick()
+    }
+
+
+    fun onTxtSearchType() {
+        txtSearchLocation.setOnEditorActionListener { textView: TextView, _: Int, _: KeyEvent ->
+            Log.d("TEST-DEBUG", textView.text.toString())
+            true
+        }
     }
 
     fun onBtnValiderSearchClick() {
@@ -33,7 +46,6 @@ class SearchCityActivity : AppCompatActivity() {
     }
 
     private fun getLatAndLongFromString(location: String) {
-        CityCoordsManager.setIsFound(false)
         if (!location.equals("")) {
             setCoordsFromAdressList(getAdressListFromString(location))
         }
@@ -48,8 +60,6 @@ class SearchCityActivity : AppCompatActivity() {
             return
         }
         val address = addressList.get(0)
-        CityCoordsManager.setLat(address.latitude)
-        CityCoordsManager.setLong(address.longitude)
-        CityCoordsManager.setIsFound(true)
+        CityCoordsManager.setAddress(address)
     }
 }

@@ -1,34 +1,38 @@
 package com.example.androidmobilempaepsi.modele
 
+import android.location.Address
+
 object CityCoordsManager {
     private var long: Double = 0.0
     private var lat: Double = 0.0
 
-    private var found = false
+    private var address: Address? = null
 
-    fun setIsFound(found: Boolean) {
-        this.found = found
+    fun setAddress(address: Address) {
+        this.address = address
     }
 
     fun isFound(): Boolean {
-        val f = found
-        found = false
-        return f
+        return address == null
+    }
+    
+    fun getAddress(): Address? {
+        val a = address
+        address = null
+        return a
     }
 
     fun getLong(): Double {
-        return long
+        if (address != null) {
+            return address!!.longitude
+        }
+        return 0.0
     }
 
     fun getLat(): Double {
-        return lat
-    }
-
-    fun setLong(Long: Double) {
-        this.long = long
-    }
-
-    fun setLat(lat: Double) {
-        this.lat = lat
+        if (address != null) {
+            return address!!.longitude
+        }
+        return 0.0
     }
 }

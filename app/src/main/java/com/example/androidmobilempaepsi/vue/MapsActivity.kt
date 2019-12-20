@@ -47,6 +47,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         btnSearch.setOnClickListener {
             val myIntent = Intent(this, SearchCityActivity::class.java)
             startActivity(myIntent)
+            finish()
         }
     }
 
