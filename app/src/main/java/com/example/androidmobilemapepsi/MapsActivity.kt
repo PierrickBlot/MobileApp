@@ -17,7 +17,14 @@ import kotlinx.android.synthetic.main.activity_maps.*
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-    private var X1_COORD = 1;
+    private var pays1 = "France";
+    private var ville1 = "Nantes";
+    private var lat1 = 300.1;
+    private var long1 = 300.1;
+    private var ville2 = "Hong Kong";
+    private var pays2 = "Tokyo";
+    private var lat2 = 200.2;
+    private var long2 = 200.2;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +33,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-
         button_id.setOnClickListener {
-            //val intent = Intent(this,TestActivity::class.java)
-            val intent = Intent(this, TestActivity::class.java)
-            intent.putExtra("X1_COORD", X1_COORD)
+            var intent = Intent(this, TestActivity::class.java)
+            intent.putExtra("PAYS_1", pays1)
+            intent.putExtra("VILLE_1", ville1)
+            intent.putExtra("LAT_1", lat1)
+            intent.putExtra("LONG_1", long1)
+            intent.putExtra("PAYS_2", pays2)
+            intent.putExtra("VILLE_2", ville2)
+            intent.putExtra("LAT_2", lat2)
+            intent.putExtra("LONG_2", long2)
             startActivity(intent)
         }
     }
