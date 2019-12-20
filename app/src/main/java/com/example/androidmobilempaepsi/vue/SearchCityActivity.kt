@@ -3,22 +3,29 @@ package com.example.androidmobilempaepsi.vue
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
+import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.view.KeyEvent
-import android.widget.TextView
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidmobilemapepsi.R
+import com.example.androidmobilempaepsi.Async.FindAddress
 import com.example.androidmobilempaepsi.modele.CityCoordsManager
 
 import kotlinx.android.synthetic.main.activity_search_city.*
 
 class SearchCityActivity : AppCompatActivity() {
 
-    private val addressList: List<Address> = ArrayList()
+    private var addressList: List<Address> = ArrayList()
+    private var findAddress: FindAddress = FindAddress(this)
+
+    init {
+        initFindAddress()
+    }
+
+    fun initFindAddress() {
+        this.findAddress.setAddressList(this.addressList)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +39,15 @@ class SearchCityActivity : AppCompatActivity() {
     }
 
     fun onTxtSearchType() {
+        /*val self = this
         txtSearchLocation.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (self.findAddress.status != AsyncTask.Status.RUNNING)
+                    self.findAddress.execute(txtSearchLocation.text.toString())
             }
-        })
+        })*/
     }
 
     fun onBtnValiderSearchClick() {
@@ -45,6 +55,7 @@ class SearchCityActivity : AppCompatActivity() {
             getLatAndLongFromString(txtSearchLocation.text.toString())
             val myIntent = Intent(this, MapsActivity::class.java)
             startActivity(myIntent)
+            finish()
         }
     }
 
