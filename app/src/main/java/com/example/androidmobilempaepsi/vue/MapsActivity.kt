@@ -1,7 +1,8 @@
-package com.example.androidmobilemapepsi
+package com.example.androidmobilempaepsi.vue
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.androidmobilemapepsi.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -9,6 +10,13 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_maps.*
+import android.content.Intent
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -21,6 +29,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        addListeners()
+    }
+
+    private fun addListeners() {
+        onBtnSearchClick()
+    }
+
+    private fun onBtnSearchClick() {
+        btnSearch.setOnClickListener {
+            val myIntent = Intent(this, SearchCityActivity::class.java)
+            startActivity(myIntent)
+        }
     }
 
     /**
@@ -40,4 +61,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
+
 }
