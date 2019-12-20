@@ -3,8 +3,6 @@ package com.example.androidmobilempaepsi.modele
 import android.location.Address
 
 object CityCoordsManager {
-    private var long: Double = 0.0
-    private var lat: Double = 0.0
 
     private var address: Address? = null
 
@@ -29,7 +27,7 @@ object CityCoordsManager {
 
     fun getLat(): Double {
         if (address != null) {
-            return address!!.longitude
+            return address!!.latitude
         }
         return 0.0
     }
