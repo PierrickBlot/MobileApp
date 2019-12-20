@@ -37,9 +37,9 @@ class TestActivity : AppCompatActivity(){
 
         }
 
-        //var oui = distanceInKmBetweenEarthCoordinates(100.1, 100.1, 200.2, 200.2)
-        var oui = distanceInKmBetweenEarthCoordinates(lat1, long1, lat2, long2)
-        var disp = String.format("%.1f", oui).plus(" Km")
+        //var res = distanceInKmBetweenEarthCoordinates(100.1, 100.1, 200.2, 200.2)
+        var res = distanceInKmBetweenEarthCoordinates(lat1, long1, lat2, long2)
+        var disp = String.format("%.1f", res).plus(" Km")
         // findViewById<TextView>(R.id.citiesTextView).text = "Paris (France) - Tokyo (Japon)"
         findViewById<TextView>(R.id.distTextView).text = disp
 
