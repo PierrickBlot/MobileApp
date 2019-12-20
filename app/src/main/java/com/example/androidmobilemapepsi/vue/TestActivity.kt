@@ -1,8 +1,9 @@
-package com.example.androidmobilemapepsi
+package com.example.androidmobilemapepsi.vue
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.androidmobilemapepsi.R
 
 
 class TestActivity : AppCompatActivity(){

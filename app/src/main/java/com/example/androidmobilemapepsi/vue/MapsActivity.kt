@@ -1,9 +1,9 @@
-package com.example.androidmobilemapepsi
+package com.example.androidmobilemapepsi.vue
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.androidmobilemapepsi.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
