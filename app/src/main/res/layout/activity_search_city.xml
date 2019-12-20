@@ -11,13 +11,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/btnValiderSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="valider" />
+
         <EditText
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Ville" />
+            android:inputType="textPersonName" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

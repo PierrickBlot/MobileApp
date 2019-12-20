@@ -12,13 +12,13 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_maps.*
 import android.content.Intent
-import androidx.core.app.ComponentActivity
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
+import android.location.Geocoder
+import android.util.Log
+import com.example.androidmobilempaepsi.modele.CityCoordsManager
+import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+
 
     private lateinit var mMap: GoogleMap
 
@@ -37,11 +37,25 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         onBtnSearchClick()
     }
 
+    override fun onRestart() { // on back from activity search
+        Log.d("TEST-DEBUG", CityCoordsManager.getLat().toString())
+        if (CityCoordsManager.isFound()) {
+
+        }
+        super.onRestart()
+    }
+
+
     private fun onBtnSearchClick() {
         btnSearch.setOnClickListener {
             val myIntent = Intent(this, SearchCityActivity::class.java)
             startActivity(myIntent)
         }
+    }
+
+    override fun onTopResumedActivityChanged(isTopResumedActivity: Boolean) {
+        Log.d("TEST-DEBUG", "coucou")
+        super.onTopResumedActivityChanged(isTopResumedActivity)
     }
 
     /**
