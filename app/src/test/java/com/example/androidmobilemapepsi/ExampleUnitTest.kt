@@ -1,4 +1,4 @@
-package com.example.androidmobileappepsi
+package com.example.androidmobilemapepsi
 
 import org.junit.Test
 

@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">AndroidMobileAppEpsi</string>
+    <string name="app_name">AndroidMobileMapEpsi</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
