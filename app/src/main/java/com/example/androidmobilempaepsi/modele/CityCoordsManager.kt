@@ -13,13 +13,11 @@ object CityCoordsManager {
     }
 
     fun isFound(): Boolean {
-        return address == null
+        return address != null
     }
-    
+
     fun getAddress(): Address? {
-        val a = address
-        address = null
-        return a
+        return address
     }
 
     fun getLong(): Double {
