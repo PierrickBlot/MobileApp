@@ -62,10 +62,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        if (CityCoordsManager.isFound()){
+            Log.d("TEST-DEBUG", "---------------------- Got there ----------------------")
 
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+            val custom = LatLng(CityCoordsManager.getLat(), CityCoordsManager.getLong())
+            mMap.addMarker(MarkerOptions().position(custom).title("New Marker"))
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(custom))
+        } else {
+            val sydney = LatLng(-34.0, 151.0)
+            mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        }
+
     }
 
 }
