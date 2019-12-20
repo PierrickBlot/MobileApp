@@ -45,6 +45,7 @@ class SearchCityActivity : AppCompatActivity() {
             getLatAndLongFromString(txtSearchLocation.text.toString())
             val myIntent = Intent(this, MapsActivity::class.java)
             startActivity(myIntent)
+            finish()
         }
     }
 
